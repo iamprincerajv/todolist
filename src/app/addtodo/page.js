@@ -24,9 +24,6 @@ export default function AddToDo() {
             alert("This activity already exists");
             result = true;
 
-            console.log(data[i].title);
-            console.log(title + "2");
-
             break;
           }
         }
