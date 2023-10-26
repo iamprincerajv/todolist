@@ -23,6 +23,15 @@ export default function Home() {
 
       // deleting the item
       if (todo[i].title == delTodo.title) {
+        let deleted = JSON.parse(localStorage.getItem("deletedTodo"));
+        
+        if(deleted) {
+          deleted.push(todo[i]);
+          localStorage.setItem("deletedTodo", JSON.stringify(deleted));
+        } else {
+          localStorage.setItem("deletedTodo", JSON.stringify([todo[i]]));
+        }
+
         continue;
       }
 

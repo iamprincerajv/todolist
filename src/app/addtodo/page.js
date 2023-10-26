@@ -6,6 +6,9 @@ export default function AddToDo() {
   const [title, setTitle] = useState("");
   const [description, setDesc] = useState("");
 
+  const date = new Date();
+  const modDate = `${date.toLocaleDateString()} ${date.toLocaleTimeString()}`;
+
   const addToDo = (e) => {
     e.preventDefault();
 
@@ -29,14 +32,14 @@ export default function AddToDo() {
         }
 
         if(!result) {
-          data.push({ sno: data.length + 1, title, description });
+          data.push({ sno: modDate, title, description });
           localStorage.setItem("todo", JSON.stringify(data));
 
           setTitle("");
           setDesc("");
         }
       } else {
-        localStorage.setItem("todo", JSON.stringify([{ sno: 1, title, description }]));
+        localStorage.setItem("todo", JSON.stringify([{ sno: modDate, title, description }]));
 
         setTitle("");
         setDesc("");
@@ -48,9 +51,9 @@ export default function AddToDo() {
   };
 
   return (
-    <div>
+    <div className='w-full grid grid-cols-1 place-items-center'>
       <h3 className='text-xl font-bold m-8'>What's Your Plan</h3>
-      <form className='ms-6 p-7 pt-0'>
+      <form className='p-7 pt-0'>
         <label htmlFor="title" className='ms-2'>Title</label>
         <input value={title} onChange={(e) => setTitle(e.target.value)} type="text" placeholder='Add a title' id='title' className='block w-80 p-2 mb-3 rounded-md border border-doubled border-orange-700 focus:outline-green-500' />
         <label htmlFor="description" className='ms-2'>Description (Optional)</label>
