@@ -52,7 +52,7 @@ export default function AddToDo() {
 
   return (
     <div className='w-full grid grid-cols-1 place-items-center'>
-      <h3 className='text-xl font-bold m-8'>What{"'"}s Your Plan</h3>
+      <h3 className='text-xl font-bold m-8'>{`What's Your Plan`}</h3>
       <form className='p-7 pt-0'>
         <label htmlFor="title" className='ms-2'>Title</label>
         <input value={title} onChange={(e) => setTitle(e.target.value)} type="text" placeholder='Add a title' id='title' className='block w-80 p-2 mb-3 rounded-md border border-doubled border-orange-700 focus:outline-green-500' />
