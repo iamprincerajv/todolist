@@ -29,7 +29,7 @@ const History = () => {
       </div>
 
       {deletedTodo && deletedTodo.length > 0 ? deletedTodo.map((items, index) => {
-        return <div key={items.sno} className='border border-solid border-orange-700 m-1 mt-7 p-6 rounded-md w-96 sm:w-72'>
+        return <div key={items.sno} className='border border-solid border-orange-700 m-1 mt-7 p-6 rounded-md w-11/12 sm:w-72'>
           <span className='relative -top-4 -left-2 text-xs text-orange-700'> {items.sno} </span>
           <h4 className='font-bold text-lg w-52'>
             {items.title}
