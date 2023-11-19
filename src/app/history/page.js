@@ -7,14 +7,18 @@ const History = () => {
 
   const [deletedTodo, setDeleted] = useState([]);
 
-  useEffect(()=>{
+  useEffect(() => {
     setDeleted(JSON.parse(localStorage.getItem("deletedTodo")));
-  },[])
+  }, [])
 
   // clearing history
   const deleteHisto = () => {
-    localStorage.removeItem("deletedTodo");
-    setDeleted([]);
+    let check = confirm('Are you sure?');
+
+    if (check) {
+      localStorage.removeItem("deletedTodo");
+      setDeleted([]);
+    }
   }
 
   return (
