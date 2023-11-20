@@ -2,14 +2,27 @@
 import Image from 'next/image'
 import { useEffect, useState } from 'react'
 import deleteImg from '@/assets/trash-solid.svg';
+import Dialog from '@/components/Dialog';
 
 export default function Home() {
 
   const [todo, setTodo] = useState([]);
+  const [showDialog, setDialog] = useState('hidden');
+  const [itemCheck, setItemCheck] = useState("");
 
   useEffect(() => {
     setTodo(JSON.parse(localStorage.getItem("todo")));
   }, []);
+
+  const todoClick = (title) => {
+    setItemCheck(title);
+
+    if (showDialog == 'hidden') {
+      setDialog('');
+    } else {
+      setDialog('hidden');
+    }
+  }
 
   const deleteTodo = (delD) => {
 
@@ -24,8 +37,8 @@ export default function Home() {
       // deleting the item
       if (todo[i].title == delTodo.title) {
         let deleted = JSON.parse(localStorage.getItem("deletedTodo"));
-        
-        if(deleted) {
+
+        if (deleted) {
           deleted.push(todo[i]);
           localStorage.setItem("deletedTodo", JSON.stringify(deleted));
         } else {
@@ -44,12 +57,11 @@ export default function Home() {
   return (
     <main className='grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5 place-items-center'>
       {todo && todo.length > 0 ? todo.map((items, index) => {
-        return <div key={items.sno} className='border border-solid border-orange-700 m-1 mt-7 p-6 rounded-md w-11/12 sm:w-72'>
+        return <div key={items.sno} onClick={() => todoClick(items.title)} className='border border-solid border-orange-700 m-1 mt-7 p-6 cursor-pointer rounded-md w-11/12 sm:w-72'>
           <span className='relative -top-4 -left-2 text-xs text-orange-700'> {items.sno} </span>
           <h4 className='font-bold text-lg w-52'>
             {items.title}
           </h4>
-          <Image onClick={() => deleteTodo(items.title)} src={deleteImg} width={17} alt='Delete' className='relative left-56 -top-10 cursor-pointer' />
           <p className='text-sm'>
             {items.description}
           </p>
@@ -57,6 +69,8 @@ export default function Home() {
       })
         : <p className='absolute top-1/4 text-center w-full'>Nothing to show</p>
       }
+
+      <Dialog deleteTodo={deleteTodo} title={itemCheck} showDialog={showDialog} />
     </main>
   )
 }

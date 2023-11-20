@@ -23,7 +23,7 @@ const History = () => {
 
   return (
     <main className='grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5 place-items-center'>
-      <div onClick={deleteHisto} className='flex justify-between w-full p-3 cursor-pointer sm:hidden'>
+      <div onClick={deleteHisto} className='flex justify-between w-11/12 p-3 cursor-pointer sm:hidden'>
         <p className='text-sm'>Clear History</p>
         <Image src={deleteImg} width={16} alt='Delete' />
       </div>
