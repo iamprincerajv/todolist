@@ -24,6 +24,10 @@ export default function Home() {
     }
   }
 
+  const closeDialog = () => {
+    setDialog("hidden");
+  };
+
   const deleteTodo = (delD) => {
 
     let delTodo = {};
@@ -70,7 +74,7 @@ export default function Home() {
         : <p className='absolute top-1/4 text-center w-full'>Nothing to show</p>
       }
 
-      <Dialog deleteTodo={deleteTodo} title={itemCheck} showDialog={showDialog} />
+      <Dialog deleteTodo={deleteTodo} title={itemCheck} showDialog={showDialog} closeDialog={closeDialog} />
     </main>
   )
 }
