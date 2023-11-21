@@ -8,7 +8,7 @@ const Dialog = (props) => {
 
   return (
     <div className={`bg-orange-700 text-white rounded p-4 py-6 text-center mt-5 ${showDialog} absolute top-1/3 left-auto shadow-lg shadow-orange-700`}>
-      <p>What do you want to do?</p>
+      <p className='bg-orange-600 rounded p-1'>What do you want to do?</p>
       <div className='flex items-center w-52 justify-evenly font-bold mt-3'>
         <p onClick={closeDialog} className='h-6 px-3 rounded-md cursor-pointer hover:bg-white hover:text-orange-700'>Close</p>
         <button className='text-white px-3 rounded-md hover:bg-white hover:text-orange-700'>Edit</button>
