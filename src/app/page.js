@@ -3,12 +3,14 @@ import Image from 'next/image'
 import { useEffect, useState } from 'react'
 import deleteImg from '@/assets/trash-solid.svg';
 import Dialog from '@/components/Dialog';
+import UpdateTodo from '@/components/UpdateTodo';
 
 export default function Home() {
 
   const [todo, setTodo] = useState([]);
   const [showDialog, setDialog] = useState('hidden');
   const [itemCheck, setItemCheck] = useState("");
+  const [showUpdate, setSUpdate] = useState('hidden');
 
   useEffect(() => {
     setTodo(JSON.parse(localStorage.getItem("todo")));
@@ -27,6 +29,15 @@ export default function Home() {
   const closeDialog = () => {
     setDialog("hidden");
   };
+
+  const editClick = (data) => {
+    setDialog("hidden");
+    setSUpdate("");
+  }
+
+  const closeUpdateBox = () => {
+    setSUpdate("hidden");
+  }
 
   const deleteTodo = (delD) => {
 
@@ -74,7 +85,8 @@ export default function Home() {
         : <p className='absolute top-1/4 text-center w-full'>Nothing to show</p>
       }
 
-      <Dialog deleteTodo={deleteTodo} title={itemCheck} showDialog={showDialog} closeDialog={closeDialog} />
+      <Dialog deleteTodo={deleteTodo} title={itemCheck} showDialog={showDialog} closeDialog={closeDialog} editClick={editClick} />
+      <UpdateTodo showUpdate={showUpdate} closeUpdateBox={closeUpdateBox} />
     </main>
   )
 }

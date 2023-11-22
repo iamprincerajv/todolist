@@ -57,7 +57,7 @@ export default function AddToDo() {
         <label htmlFor="title" className='ms-2'>Title</label>
         <input value={title} onChange={(e) => setTitle(e.target.value)} type="text" placeholder='Add a title' id='title' className='block w-full sm:w-80 p-1.5 mb-3 rounded-md border border-doubled border-orange-700 focus:outline-green-500' />
         <label htmlFor="description" className='ms-2'>Description (Optional)</label>
-        <input value={description} onChange={(e) => setDesc(e.target.value)} type="text" placeholder='Add a description' id='description' className='block w-full sm:w-80 p-1.5 mb-3 rounded-md border border-doubled border-orange-700 focus:outline-green-500' />
+        <textarea rows="3" value={description} onChange={(e) => setDesc(e.target.value)} type="text" placeholder='Add a description' id='description' className='block w-full sm:w-80 p-1.5 mb-3 rounded-md border border-doubled border-orange-700 focus:outline-green-500' />
         <button type='submit' onClick={addToDo} className='block bg-orange-700 text-white font-bold p-2.5 w-full sm:w-80 rounded-md'>ADD</button>
       </form>
     </div>
