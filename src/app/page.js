@@ -85,8 +85,12 @@ export default function Home() {
         : <p className='absolute top-1/4 text-center w-full'>Nothing to show</p>
       }
 
-      <Dialog deleteTodo={deleteTodo} title={itemCheck} showDialog={showDialog} closeDialog={closeDialog} editClick={editClick} />
-      <UpdateTodo showUpdate={showUpdate} closeUpdateBox={closeUpdateBox} />
+      {
+        showDialog == "" ? <Dialog deleteTodo={deleteTodo} title={itemCheck} showDialog={showDialog} closeDialog={closeDialog} editClick={editClick} /> : ""
+      }
+      {
+        showUpdate == "" ? <UpdateTodo showUpdate={showUpdate} closeUpdateBox={closeUpdateBox} todo={todo} setTodo={setTodo} itemCheck={itemCheck} /> : ""
+      }
     </main>
   )
 }
