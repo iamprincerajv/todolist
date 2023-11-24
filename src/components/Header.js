@@ -8,7 +8,7 @@ const Header = () => {
   const pathname = usePathname();
 
   return (
-    <header className='flex sticky bg-orange-700 text-white justify-start items-center h-12 p-1 py-7'>
+    <header className='flex sticky top-0 bg-orange-700 text-white justify-start items-center h-12 p-1 py-7'>
       <p className='text-2xl ms-4 sm:ms-8 font-bold'>AcTo</p>
       <ul className='flex justify-evenly w-full sm:w-96 text-sm'>
         <li className={`py-1 px-3 rounded ${pathname === "/" ? "bg-orange-900" : ""}`} > <Link href="/">Home</Link> </li>
