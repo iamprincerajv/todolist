@@ -67,6 +67,7 @@ export default function Home() {
     }
     setTodo(newTodo);
     localStorage.setItem("todo", JSON.stringify(newTodo));
+    setDialog("hidden");
   }
 
   return (
